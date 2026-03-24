@@ -3,51 +3,7 @@
 
 import sys
 
-
-def add(a: float, b: float) -> float:
-    return a + b
-
-
-def subtract(a: float, b: float) -> float:
-    return a - b
-
-
-def multiply(a: float, b: float) -> float:
-    return a * b
-
-
-def divide(a: float, b: float) -> float:
-    if b == 0:
-        raise ValueError("Cannot divide by zero")
-    return a / b
-
-
-OPERATIONS = {
-    "+": add,
-    "-": subtract,
-    "*": multiply,
-    "/": divide,
-}
-
-
-def evaluate(expression: str) -> float:
-    """Evaluate a simple 'number operator number' expression."""
-    parts = expression.split()
-    if len(parts) != 3:
-        raise ValueError("Expected format: <number> <operator> <number>")
-
-    a_str, op, b_str = parts
-
-    try:
-        a = float(a_str)
-        b = float(b_str)
-    except ValueError:
-        raise ValueError(f"Invalid number in expression: {expression}")
-
-    if op not in OPERATIONS:
-        raise ValueError(f"Unknown operator '{op}'. Supported: {', '.join(OPERATIONS)}")
-
-    return OPERATIONS[op](a, b)
+from evaluator import evaluate
 
 
 def repl():
